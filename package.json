@@ -1,0 +1,30 @@
+{
+  "name": "landing-restaurante-base",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "menu:generate": "node tools/import-menu.cjs",
+    "menu:write": "node tools/import-menu.cjs --write",
+    "test": "node --test tests/import-menu.test.cjs tests/featured.test.cjs tests/studio.test.cjs tests/public-site.test.cjs",
+    "test:site": "node tests/smoke.cjs",
+    "menu:html:check": "node tools/generate-menu-html.cjs --check",
+    "menu:html:sync": "node tools/generate-menu-html.cjs --write",
+    "seo:check": "node tools/sync-seo.cjs --check",
+    "seo:sync": "node tools/sync-seo.cjs --write",
+    "menu:business:sync": "node tools/business-html.cjs --write",
+    "menu:business:check": "node tools/business-html.cjs --check",
+    "studio": "node tools/studio.cjs",
+    "menu:template:v2": "node tools/create-catalog-template-v2.mjs",
+    "menu:preview": "node tools/catalog-preview.cjs",
+    "menu:candidates": "node tools/generate-candidates.cjs",
+    "menu:apply": "node tools/menu-transaction.cjs apply",
+    "menu:restore": "node tools/menu-transaction.cjs restore",
+    "build:site": "node tools/build-site.cjs",
+    "public:check": "node tools/build-site.cjs --check"
+  },
+  "devDependencies": {
+    "exceljs": "4.4.0",
+    "playwright": "^1.64.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}

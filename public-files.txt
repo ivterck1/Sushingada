@@ -1,0 +1,9 @@
+assets/images/brand/placeholder.svg
+assets/images/hero/placeholder.svg
+assets/images/products/placeholder.svg
+css/styles.css
+css/theme.css
+index.html
+js/app.js
+js/config.js
+js/menu-data.js

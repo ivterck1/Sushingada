@@ -1,0 +1,11 @@
+archive/
+node_modules/
+__pycache__/
+tmp/
+client-input/
+backups/
+.env
+.env.*
+*.local.json
+*.xlsx
+!templates/menu-cliente.xlsx

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO:START (generado desde js/config.js; npm run seo:sync) -->
+    <title>SUSHI NGADA | Menú de demostración</title>
+    <meta name="description" content="Demostración de SUSHI NGADA con un catálogo ficticio.">
+    <meta name="robots" content="noindex,follow">
+    <meta property="og:title" content="SUSHI NGADA | Menú de demostración">
+    <meta property="og:description" content="Demostración de SUSHI NGADA con un catálogo ficticio.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SUSHI NGADA">
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="SUSHI NGADA | Menú de demostración">
+    <meta name="twitter:description" content="Demostración de SUSHI NGADA con un catálogo ficticio.">
+    <!-- SEO:END -->
+    <link rel="icon" href="assets/images/brand/placeholder.svg?v=1.0.3" sizes="any">
+    <link rel="stylesheet" href="css/theme.css?v=1.0.3">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.4">
+    <script src="js/config.js?v=1.0.5" defer></script>
+    <script src="js/menu-data.js?v=1.0.3" defer></script>
+    <script src="js/app.js?v=1.0.3" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="brand" href="#inicio" aria-label="Inicio de SUSHI NGADA">
+          <img
+            src="assets/images/brand/placeholder.svg"
+            alt="SUSHI NGADA"
+            width="230"
+            height="96"
+          >
+        </a>
+
+        <ul class="nav-links">
+          <li><a class="is-active" href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#pedido">Pedido</a></li>
+        </ul>
+
+        <div class="header-actions">
+          <a class="header-whatsapp" href="#pedido" data-order-link>Ver pedido</a>
+          <a class="header-cart" href="#carrito" aria-label="Ver carrito">
+            <span class="cart-icon" aria-hidden="true"></span>
+            <span class="cart-count" id="header-cart-count">0</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-content">
+          <div class="hero-copy">
+            <p class="eyebrow" data-config="hero.eyebrow">Demostración</p>
+            <h1>
+              <span data-config="hero.title">Elige tu próximo antojo.</span>
+              <strong data-config="hero.highlight">Pide a tu manera.</strong>
+            </h1>
+            <p data-config="hero.description">Explora el catálogo ficticio de SUSHI NGADA y prueba el carrito de demostración.</p>
+            <div class="hero-actions">
+              <a class="button secondary-button" href="#menu">Ver menú</a>
+              <a class="button primary-button" href="#pedido" data-order-link>Ver pedido</a>
+            </div>
+          </div>
+
+          <figure class="hero-plate" aria-hidden="true">
+            <img
+              src="assets/images/hero/placeholder.svg"
+              alt="Presentación del negocio"
+              width="900"
+              height="675"
+            >
+          </figure>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Beneficios del pedido">
+        <article>
+          <span aria-hidden="true">01</span>
+          <div>
+            <strong>Menú a tu alcance</strong>
+            <p>Consulta las opciones</p>
+          </div>
+        </article>
+        <article>
+          <span aria-hidden="true">02</span>
+          <div>
+            <strong>Sabor auténtico</strong>
+            <p>Recetas de la casa</p>
+          </div>
+        </article>
+        <article>
+          <span aria-hidden="true">03</span>
+          <div>
+            <strong>Listo para disfrutar</strong>
+            <p>Ordena y confirma</p>
+          </div>
+        </article>
+        <article>
+          <span aria-hidden="true">04</span>
+          <div>
+            <strong>Compra segura</strong>
+            <p>Pedido revisado antes de enviar</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section specialties-section" id="especialidades" aria-labelledby="specialties-title">
+        <div class="section-title">
+          <span aria-hidden="true"></span>
+          <h2 id="specialties-title">Especialidades</h2>
+          <span aria-hidden="true"></span>
+        </div>
+
+        <div class="specialties-grid" id="featured-grid"></div>
+      </section>
+
+      <section class="section menu-order-section" id="menu" aria-labelledby="menu-title">
+        <div class="menu-order-layout">
+          <div class="catalog-column">
+            <div class="section-title compact-title">
+              <span aria-hidden="true"></span>
+              <h2 id="menu-title">Menú completo</h2>
+              <span aria-hidden="true"></span>
+            </div>
+
+            <p id="catalog-price-status" hidden></p>
+            <div class="category-picker" hidden>
+              <label for="category-select">Categoría</label>
+              <select id="category-select"></select>
+            </div>
+            <div class="category-list" role="group" aria-label="Categorías del menú" hidden></div>
+            <p id="category-status" class="visually-hidden" role="status"></p>
+
+            <div class="menu-grid" id="menu-grid" aria-label="Platillos disponibles">
+              <!-- MENU:START (generado por npm run menu:html:sync) -->
+              <nav class="menu-category-index" aria-label="Índice de categorías">
+                <ul>
+                  <li><a href="#menu-categoria-entradas">Entradas</a></li>
+                  <li><a href="#menu-categoria-platos-principales">Platos principales</a></li>
+                  <li><a href="#menu-categoria-postres">Postres</a></li>
+                  <li><a href="#menu-categoria-bebidas">Bebidas</a></li>
+                  <li><a href="#menu-categoria-temporada">Temporada</a></li>
+                </ul>
+              </nav>
+              <section id="menu-categoria-entradas" class="menu-category" data-menu-category="Entradas" aria-labelledby="menu-categoria-entradas-titulo">
+                <h3 id="menu-categoria-entradas-titulo">Entradas</h3>
+                <div class="menu-category-cards">
+                  <article class="menu-card" data-menu-product-id="demo-1">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Entrada de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Entrada de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                  <article class="menu-card" data-menu-product-id="demo-2">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Ensalada de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Ensalada de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section id="menu-categoria-platos-principales" class="menu-category" data-menu-category="Platos principales" aria-labelledby="menu-categoria-platos-principales-titulo">
+                <h3 id="menu-categoria-platos-principales-titulo">Platos principales</h3>
+                <div class="menu-category-cards">
+                  <article class="menu-card" data-menu-product-id="demo-3">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Plato de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Plato de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                  <article class="menu-card" data-menu-product-id="demo-4">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Opción vegetal de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Opción vegetal de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section id="menu-categoria-postres" class="menu-category" data-menu-category="Postres" aria-labelledby="menu-categoria-postres-titulo">
+                <h3 id="menu-categoria-postres-titulo">Postres</h3>
+                <div class="menu-category-cards">
+                  <article class="menu-card" data-menu-product-id="demo-5">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Postre de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Postre de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section id="menu-categoria-bebidas" class="menu-category" data-menu-category="Bebidas" aria-labelledby="menu-categoria-bebidas-titulo">
+                <h3 id="menu-categoria-bebidas-titulo">Bebidas</h3>
+                <div class="menu-category-cards">
+                  <article class="menu-card" data-menu-product-id="demo-6">
+                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Bebida de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-content">
+                      <h4>Bebida de ejemplo</h4>
+                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section id="menu-categoria-temporada" class="menu-category" data-menu-category="Temporada" aria-labelledby="menu-categoria-temporada-titulo">
+                <h3 id="menu-categoria-temporada-titulo">Temporada</h3>
+                <div class="menu-category-cards">
+                  <p class="menu-empty">No hay productos disponibles en esta categoría.</p>
+                </div>
+              </section>
+              <!-- MENU:END -->
+            </div>
+          </div>
+
+          <aside class="cart-panel" id="carrito" aria-labelledby="cart-title" tabindex="-1">
+            <div class="cart-panel-header">
+              <div class="section-title compact-title">
+                <span aria-hidden="true"></span>
+                <h2 id="cart-title">Tu pedido</h2>
+                <span aria-hidden="true"></span>
+              </div>
+              <button
+                class="mobile-panel-close"
+                id="mobile-order-close"
+                type="button"
+                aria-label="Cerrar pedido"
+              >
+                ×
+              </button>
+            </div>
+
+            <div class="cart-summary" aria-live="polite">
+              <p class="empty-cart" id="empty-cart">Tu carrito está vacío.</p>
+              <div class="cart-items" id="cart-items" aria-label="Productos en el carrito"></div>
+              <div class="cart-totals">
+                <div class="cart-line">
+                  <span>Subtotal</span>
+                  <strong id="cart-subtotal">$0.00</strong>
+                </div>
+                <div class="cart-total">
+                  <span>Total</span>
+                  <strong id="cart-total">$0.00</strong>
+                </div>
+              </div>
+            </div>
+
+            <section class="order-form-section" id="pedido" aria-labelledby="order-title" tabindex="-1">
+              <h2 id="order-title">Datos del cliente</h2>
+              <form class="order-form">
+                <label for="customer-name">Nombre</label>
+                <input
+                  id="customer-name"
+                  name="customerName"
+                  type="text"
+                  placeholder="Ej. Ana López"
+                >
+
+                <fieldset id="delivery-options">
+                  <legend>Tipo de entrega</legend>
+                </fieldset>
+
+                <label for="customer-address">Dirección</label>
+                <input
+                  id="customer-address"
+                  name="customerAddress"
+                  type="text"
+                  placeholder="Calle, número, colonia y referencias"
+                >
+
+                <label for="order-notes">Notas del pedido</label>
+                <textarea
+                  id="order-notes"
+                  name="orderNotes"
+                  rows="4"
+                  placeholder="Ej. Preferencias o indicaciones adicionales"
+                ></textarea>
+              </form>
+            </section>
+
+            <button class="whatsapp-button" type="button" hidden disabled>
+              Enviar por WhatsApp
+            </button>
+            <p class="order-message" id="order-message" aria-live="polite"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section story-section" aria-labelledby="story-title">
+        <div class="story-card">
+          <img
+            src="assets/images/brand/placeholder.svg"
+            alt=""
+            width="240"
+            height="240"
+          >
+          <div>
+            <p class="eyebrow">Conoce el negocio</p>
+            <h2 id="story-title">Nuestra historia</h2>
+            <!-- BUSINESS-STORY:START -->
+            <p>Demostración de SUSHI NGADA con productos ficticios.</p>
+            <!-- BUSINESS-STORY:END -->
+            <p class="story-highlight">Elige, revisa y pide.</p>
+          </div>
+        </div>
+      </section>
+    <noscript><p>El menú se puede consultar aquí. Para usar el carrito, activa JavaScript.</p></noscript>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- BUSINESS-FOOTER:START -->
+        <div>
+          <p>SUSHI NGADA</p>
+          <div id="business-contact" role="group" aria-label="Datos de contacto">
+          </div>
+        </div>
+        <img class="footer-logo" src="assets/images/brand/placeholder.svg" alt="" width="230" height="96">
+        <!-- BUSINESS-FOOTER:END -->
+      </div>
+    </footer>
+
+    <dialog class="mobile-cart-dialog" id="mobile-cart-dialog" aria-labelledby="cart-title"></dialog>
+    <p id="cart-status" class="visually-hidden" role="status"></p>
+
+    <div class="mobile-order-bar" id="mobile-order-bar" hidden>
+      <button class="mobile-order-toggle" id="mobile-order-toggle" type="button" aria-controls="mobile-cart-dialog" aria-haspopup="dialog" aria-expanded="false">
+        <span class="mobile-order-count" id="mobile-order-count">0 productos</span>
+        <strong id="mobile-order-total">$0.00</strong>
+        <span>Ver pedido</span>
+      </button>
+    </div>
+  </body>
+</html>
