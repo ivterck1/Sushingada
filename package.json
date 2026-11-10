@@ -9,6 +9,8 @@
     "test:site": "node tests/smoke.cjs",
     "menu:html:check": "node tools/generate-menu-html.cjs --check",
     "menu:html:sync": "node tools/generate-menu-html.cjs --write",
+    "promotions:sync": "node tools/promotions-html.cjs --write",
+    "promotions:check": "node tools/promotions-html.cjs --check",
     "seo:check": "node tools/sync-seo.cjs --check",
     "seo:sync": "node tools/sync-seo.cjs --write",
     "menu:business:sync": "node tools/business-html.cjs --write",

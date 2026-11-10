@@ -16,11 +16,12 @@
     <meta name="twitter:title" content="SUSHI NGADA | Menú de demostración">
     <meta name="twitter:description" content="Demostración de SUSHI NGADA con un catálogo ficticio.">
     <!-- SEO:END -->
-    <link rel="icon" href="assets/images/brand/placeholder.svg?v=1.0.3" sizes="any">
-    <link rel="stylesheet" href="css/theme.css?v=1.0.3">
-    <link rel="stylesheet" href="css/styles.css?v=1.0.4">
-    <script src="js/config.js?v=1.0.5" defer></script>
-    <script src="js/menu-data.js?v=1.0.3" defer></script>
+    <link rel="icon" href="assets/images/brand/sushi-ngada.svg?v=1.0.6" sizes="any">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.6">
+    <link rel="stylesheet" href="css/theme.css?v=1.0.12">
+    <script src="js/config.js?v=1.0.12" defer></script>
+    <script src="js/menu-data.js?v=1.0.7" defer></script>
+    <script src="js/promotions.js?v=1.0.12" defer></script>
     <script src="js/app.js?v=1.0.3" defer></script>
   </head>
   <body>
@@ -28,7 +29,7 @@
       <nav class="main-nav" aria-label="Navegación principal">
         <a class="brand" href="#inicio" aria-label="Inicio de SUSHI NGADA">
           <img
-            src="assets/images/brand/placeholder.svg"
+            src="assets/images/brand/sushi-ngada.svg"
             alt="SUSHI NGADA"
             width="230"
             height="96"
@@ -38,14 +39,16 @@
         <ul class="nav-links">
           <li><a class="is-active" href="#inicio">Inicio</a></li>
           <li><a href="#menu">Menú</a></li>
+          <li><a href="#promociones">Promociones</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#pedido">Pedido</a></li>
         </ul>
 
         <div class="header-actions">
           <a class="header-whatsapp" href="#pedido" data-order-link>Ver pedido</a>
           <a class="header-cart" href="#carrito" aria-label="Ver carrito">
-            <span class="cart-icon" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l3 13h11l3-9H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
             <span class="cart-count" id="header-cart-count">0</span>
           </a>
         </div>
@@ -56,79 +59,58 @@
       <section class="hero" id="inicio">
         <div class="hero-content">
           <div class="hero-copy">
-            <p class="eyebrow" data-config="hero.eyebrow">Demostración</p>
+            <span class="hero-japanese" lang="ja" aria-hidden="true">寿司ングダ</span>
             <h1>
-              <span data-config="hero.title">Elige tu próximo antojo.</span>
-              <strong data-config="hero.highlight">Pide a tu manera.</strong>
+              <span data-config="hero.title">Sushi</span>
+              <strong data-config="hero.highlight">Ngada</strong>
             </h1>
-            <p data-config="hero.description">Explora el catálogo ficticio de SUSHI NGADA y prueba el carrito de demostración.</p>
+            <p data-config="hero.description">Sabor japonés con actitud urbana</p>
             <div class="hero-actions">
-              <a class="button secondary-button" href="#menu">Ver menú</a>
-              <a class="button primary-button" href="#pedido" data-order-link>Ver pedido</a>
+              <a class="button primary-button" href="#menu">Explorar menú <span aria-hidden="true">→</span></a>
+              <a class="button secondary-button" href="#promociones">Promociones</a>
             </div>
           </div>
 
           <figure class="hero-plate" aria-hidden="true">
             <img
-              src="assets/images/hero/placeholder.svg"
-              alt="Presentación del negocio"
-              width="900"
-              height="675"
+              src="assets/images/hero/urban-rising-sun.webp"
+              alt=""
+              width="1024"
+              height="1536"
             >
           </figure>
         </div>
       </section>
 
-      <section class="trust-strip" aria-label="Beneficios del pedido">
+      <section class="trust-strip" aria-label="Atributos del concepto">
         <article>
-          <span aria-hidden="true">01</span>
-          <div>
-            <strong>Menú a tu alcance</strong>
-            <p>Consulta las opciones</p>
-          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h12v12H2zM14 9h4l4 4v4h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+          <strong>Entrega a domicilio</strong>
         </article>
         <article>
-          <span aria-hidden="true">02</span>
-          <div>
-            <strong>Sabor auténtico</strong>
-            <p>Recetas de la casa</p>
-          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l2 14H3L5 7Zm4 2V6a3 3 0 0 1 6 0v3"/></svg>
+          <strong>Recoge en el local</strong>
         </article>
         <article>
-          <span aria-hidden="true">03</span>
-          <div>
-            <strong>Listo para disfrutar</strong>
-            <p>Ordena y confirma</p>
-          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4C9 3 4 8 4 14a5 5 0 0 0 5 5c6 0 11-5 11-15ZM3 21 15 9"/></svg>
+          <strong>Ingredientes premium</strong>
         </article>
         <article>
-          <span aria-hidden="true">04</span>
-          <div>
-            <strong>Compra segura</strong>
-            <p>Pedido revisado antes de enviar</p>
-          </div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 19 18-9M3 22 21 4"/></svg>
+          <strong>Rollos de autor</strong>
         </article>
-      </section>
-
-      <section class="section specialties-section" id="especialidades" aria-labelledby="specialties-title">
-        <div class="section-title">
-          <span aria-hidden="true"></span>
-          <h2 id="specialties-title">Especialidades</h2>
-          <span aria-hidden="true"></span>
-        </div>
-
-        <div class="specialties-grid" id="featured-grid"></div>
       </section>
 
       <section class="section menu-order-section" id="menu" aria-labelledby="menu-title">
         <div class="menu-order-layout">
           <div class="catalog-column">
             <div class="section-title compact-title">
-              <span aria-hidden="true"></span>
-              <h2 id="menu-title">Menú completo</h2>
-              <span aria-hidden="true"></span>
+              <img class="catalog-art" src="assets/images/brand/bambu-ink.webp" alt="" width="320" height="523" loading="lazy" decoding="async">
+              <p class="eyebrow">Nuestro menú</p>
+              <h2 id="menu-title">Elige tu<br>experiencia</h2>
             </div>
 
+            <p>Catálogo demostrativo. Las imágenes generadas con IA ilustran platillos ficticios.</p>
             <p id="catalog-price-status" hidden></p>
             <div class="category-picker" hidden>
               <label for="category-select">Categoría</label>
@@ -152,18 +134,18 @@
                 <h3 id="menu-categoria-entradas-titulo">Entradas</h3>
                 <div class="menu-category-cards">
                   <article class="menu-card" data-menu-product-id="demo-1">
-                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Entrada de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-image"><img src="assets/images/products/gyozas-demo.webp" alt="Gyozas doradas" loading="lazy" width="640" height="480"></div>
                     <div class="dish-content">
-                      <h4>Entrada de ejemplo</h4>
-                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <h4>Gyozas doradas</h4>
+                      <p>Gyozas doradas al frente, con salsa para acompañar.</p>
                       <div class="dish-footer"><p class="price">Precio pendiente</p></div>
                     </div>
                   </article>
                   <article class="menu-card" data-menu-product-id="demo-2">
-                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Ensalada de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-image"><img src="assets/images/products/tempura-demo.webp" alt="Tempura de camarón" loading="lazy" width="640" height="480"></div>
                     <div class="dish-content">
-                      <h4>Ensalada de ejemplo</h4>
-                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <h4>Tempura de camarón</h4>
+                      <p>Camarones rebozados sobre una cama de vegetales.</p>
                       <div class="dish-footer"><p class="price">Precio pendiente</p></div>
                     </div>
                   </article>
@@ -173,18 +155,42 @@
                 <h3 id="menu-categoria-platos-principales-titulo">Platos principales</h3>
                 <div class="menu-category-cards">
                   <article class="menu-card" data-menu-product-id="demo-3">
-                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Plato de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-image"><img src="assets/images/products/ngada-roll-demo.webp" alt="Ngada Roll" loading="lazy" width="640" height="480"></div>
                     <div class="dish-content">
-                      <h4>Plato de ejemplo</h4>
-                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <h4>Ngada Roll</h4>
+                      <p>Rollo cubierto de salmón con aguacate y un toque de ajonjolí.</p>
                       <div class="dish-footer"><p class="price">Precio pendiente</p></div>
                     </div>
                   </article>
                   <article class="menu-card" data-menu-product-id="demo-4">
-                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Opción vegetal de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-image"><img src="assets/images/products/bowl-salmon-demo.webp" alt="Bowl de salmón" loading="lazy" width="640" height="480"></div>
                     <div class="dish-content">
-                      <h4>Opción vegetal de ejemplo</h4>
-                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <h4>Bowl de salmón</h4>
+                      <p>Arroz con salmón, aguacate, pepino y alga.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                  <article class="menu-card" data-menu-product-id="demo-8">
+                    <div class="dish-image"><img src="assets/images/products/rollos-variados-demo.webp" alt="Rollos variados" loading="lazy" width="640" height="480"></div>
+                    <div class="dish-content">
+                      <h4>Rollos variados</h4>
+                      <p>Selección de rollos con distintas coberturas y acabados.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                  <article class="menu-card" data-menu-product-id="demo-9">
+                    <div class="dish-image"><img src="assets/images/products/nigiri-sashimi-demo.webp" alt="Nigiri y sashimi" loading="lazy" width="640" height="480"></div>
+                    <div class="dish-content">
+                      <h4>Nigiri y sashimi</h4>
+                      <p>Selección de nigiri y cortes de pescado.</p>
+                      <div class="dish-footer"><p class="price">Precio pendiente</p></div>
+                    </div>
+                  </article>
+                  <article class="menu-card" data-menu-product-id="demo-10">
+                    <div class="dish-image"><img src="assets/images/products/bowl-glaseado-demo.webp" alt="Bowl glaseado" loading="lazy" width="640" height="480"></div>
+                    <div class="dish-content">
+                      <h4>Bowl glaseado</h4>
+                      <p>Arroz, vegetales y láminas con glaseado.</p>
                       <div class="dish-footer"><p class="price">Precio pendiente</p></div>
                     </div>
                   </article>
@@ -207,10 +213,10 @@
                 <h3 id="menu-categoria-bebidas-titulo">Bebidas</h3>
                 <div class="menu-category-cards">
                   <article class="menu-card" data-menu-product-id="demo-6">
-                    <div class="dish-image"><img src="assets/images/products/placeholder.svg" alt="Bebida de ejemplo" loading="lazy" width="640" height="480" data-image-state="fallback"></div>
+                    <div class="dish-image"><img src="assets/images/products/te-helado-demo.webp" alt="Té helado" loading="lazy" width="640" height="480"></div>
                     <div class="dish-content">
-                      <h4>Bebida de ejemplo</h4>
-                      <p>Producto de demostración. Sustituye esta descripción por ingredientes y porción.</p>
+                      <h4>Té helado</h4>
+                      <p>Bebida de té con hielo y menta.</p>
                       <div class="dish-footer"><p class="price">Precio pendiente</p></div>
                     </div>
                   </article>
@@ -299,42 +305,129 @@
         </div>
       </section>
 
-      <section class="section story-section" aria-labelledby="story-title">
+      <section class="section specialties-section" id="especialidades" aria-labelledby="specialties-title">
+        <div class="specialties-banner">
+          <img class="specialties-art" src="assets/images/brand/torii-fuji.webp" alt="" width="650" height="711" loading="lazy" decoding="async">
+          <div class="specialties-copy">
+            <p class="eyebrow">Especialidades</p>
+            <h2 id="specialties-title">Rollos de autor</h2>
+            <p>Creaciones únicas de la casa</p>
+          </div>
+        </div>
+        <div class="specialties-grid" id="featured-grid"></div>
+      </section>
+
+      <section class="promotions-section" id="promociones" aria-labelledby="promotions-title">
+        <h2 class="visually-hidden" id="promotions-title">Promociones</h2>
+        <div class="promotion-stage">
+          <!-- PROMOTIONS:START -->
+          <article class="promotion-layout" data-campaign="crazy-fridays" aria-labelledby="campaign-crazy-fridays" data-active>
+            <div class="promotion-photos">
+              <img class="promotion-photo" src="assets/images/products/rollos-variados-demo.webp" alt="Rollos variados de sushi" width="1440" height="1080" loading="lazy" decoding="async">
+            </div>
+            <div class="promotions-copy">
+              <img class="promotions-art" src="assets/images/brand/faroles-sakura.webp" alt="" width="480" height="640" loading="lazy" decoding="async">
+              <p class="promotion-label">Promoción ficticia · Demo</p>
+              <p class="promotion-name">Crazy Fridays</p>
+              <h3 id="campaign-crazy-fridays">3×1</h3>
+              <p class="promotion-message">Los viernes se ponen NGADA.</p>
+              <p class="promotion-description">Tres por uno en rollos seleccionados.</p>
+              <a class="button promotion-link" href="#menu">Explorar menú <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="promotion-layout" data-campaign="birthday-ngada" aria-labelledby="campaign-birthday-ngada" inert aria-hidden="true">
+            <div class="promotion-photos">
+              <img class="promotion-photo" src="assets/images/products/ngada-roll-demo.webp" alt="Rollos de salmón con flores de sakura al fondo" width="1440" height="1080" loading="lazy" decoding="async">
+            </div>
+            <div class="promotions-copy">
+              <img class="promotions-art" src="assets/images/brand/faroles-sakura.webp" alt="" width="480" height="640" loading="lazy" decoding="async">
+              <p class="promotion-label">Promoción ficticia · Demo</p>
+              <p class="promotion-name">Birthday Ngada</p>
+              <h3 id="campaign-birthday-ngada">Tu día.<br>Tu festín.</h3>
+              <p class="promotion-description">Celebra tu cumpleaños con una experiencia especial de sushi.</p>
+              <p class="promotion-status">Beneficio por definir</p>
+              <a class="button promotion-link" href="#menu">Explorar menú <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="promotion-layout" data-campaign="combo-ngada" aria-labelledby="campaign-combo-ngada" inert aria-hidden="true">
+            <div class="promotion-photos" data-pair>
+              <img class="promotion-photo" src="assets/images/products/rollos-variados-demo.webp" alt="Rollos variados en una bandeja" width="1440" height="1080" loading="lazy" decoding="async">
+              <img class="promotion-detail" src="assets/images/products/gyozas-demo.webp" alt="Gyozas doradas" width="1440" height="1080" loading="lazy" decoding="async">
+            </div>
+            <div class="promotions-copy">
+              <img class="promotions-art" src="assets/images/brand/faroles-sakura.webp" alt="" width="480" height="640" loading="lazy" decoding="async">
+              <p class="promotion-label">Promoción ficticia · Demo</p>
+              <p class="promotion-name">Combo Ngada</p>
+              <h3 id="campaign-combo-ngada">El doble<br>de antojo.</h3>
+              <p class="promotion-description">Una selección de rollos y entradas japonesas para compartir.</p>
+              <p class="promotion-status">Precio pendiente</p>
+              <a class="button promotion-link" href="#menu">Explorar menú <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <!-- PROMOTIONS:END -->
+        </div>
+        <div class="promotion-controls" role="group" aria-label="Seleccionar promoción" hidden>
+          <button type="button" data-promotion-prev aria-label="Promoción anterior">←</button>
+          <span class="promotion-counter" aria-hidden="true"></span>
+          <div class="promotion-choices" role="group" aria-label="Promociones disponibles"></div>
+          <button type="button" data-promotion-next aria-label="Promoción siguiente">→</button>
+          <div class="promotion-progress" aria-hidden="true"></div>
+        </div>
+        <p class="promotion-announcement visually-hidden" role="status"></p>
+      </section>
+
+      <section class="section story-section" id="nosotros" aria-labelledby="story-title">
         <div class="story-card">
-          <img
-            src="assets/images/brand/placeholder.svg"
-            alt=""
-            width="240"
-            height="240"
-          >
-          <div>
-            <p class="eyebrow">Conoce el negocio</p>
+          <div class="story-copy">
+            <p class="eyebrow">El concepto</p>
             <h2 id="story-title">Nuestra historia</h2>
             <!-- BUSINESS-STORY:START -->
             <p>Demostración de SUSHI NGADA con productos ficticios.</p>
             <!-- BUSINESS-STORY:END -->
-            <p class="story-highlight">Elige, revisa y pide.</p>
+          </div>
+          <div class="story-signature">
+            <img src="assets/images/brand/sushi-ngada.svg" alt="" width="230" height="96" loading="lazy" decoding="async">
           </div>
         </div>
       </section>
     <noscript><p>El menú se puede consultar aquí. Para usar el carrito, activa JavaScript.</p></noscript>
     </main>
 
+    <p id="cart-status" class="visually-hidden" role="status"></p>
+
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- BUSINESS-FOOTER:START -->
-        <div>
-          <p>SUSHI NGADA</p>
-          <div id="business-contact" role="group" aria-label="Datos de contacto">
-          </div>
+        <div class="footer-brand">
+          <!-- BUSINESS-FOOTER:START -->
+          <img class="footer-logo" src="assets/images/brand/sushi-ngada.svg" alt="" width="230" height="96" loading="lazy" decoding="async">
+          <p class="footer-name">SUSHI NGADA</p>
+          <!-- BUSINESS-FOOTER:END -->
+          <p class="footer-tagline">Sabor japonés con actitud urbana.</p>
         </div>
-        <img class="footer-logo" src="assets/images/brand/placeholder.svg" alt="" width="230" height="96">
-        <!-- BUSINESS-FOOTER:END -->
+        <nav class="footer-nav" aria-labelledby="footer-nav-title">
+          <h2 class="footer-heading" id="footer-nav-title">Explora</h2>
+          <ul class="footer-links">
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#promociones">Promociones</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#pedido">Pedido</a></li>
+          </ul>
+        </nav>
+        <!-- BUSINESS-SOCIAL:START -->
+        <nav class="footer-social-block" aria-labelledby="footer-social-title">
+          <h2 class="footer-heading" id="footer-social-title">Redes</h2>
+          <ul class="footer-social">
+            <li><a href="#footer-social-demo" aria-label="Instagram, perfil pendiente"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1"/></svg></a></li>
+            <li><a href="#footer-social-demo" aria-label="Facebook, perfil pendiente"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 21v-8h3l.5-3H14V8c0-1 .3-1.5 1.7-1.5H18V3.8a19 19 0 0 0-2.6-.2C12.8 3.6 11 5.2 11 8v2H8v3h3v8z"/></svg></a></li>
+            <li><a href="#footer-social-demo" aria-label="TikTok, perfil pendiente"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M14 3h3a5 5 0 0 0 4 4v3a8 8 0 0 1-4-1.4V16a5.5 5.5 0 1 1-5.5-5.5h.5v3a2.5 2.5 0 1 0 2 2.5z"/></svg></a></li>
+          </ul>
+          <p class="footer-social-note" id="footer-social-demo" tabindex="-1">Perfiles oficiales por confirmar.</p>
+        </nav>
+        <!-- BUSINESS-SOCIAL:END -->
       </div>
     </footer>
 
     <dialog class="mobile-cart-dialog" id="mobile-cart-dialog" aria-labelledby="cart-title"></dialog>
-    <p id="cart-status" class="visually-hidden" role="status"></p>
 
     <div class="mobile-order-bar" id="mobile-order-bar" hidden>
       <button class="mobile-order-toggle" id="mobile-order-toggle" type="button" aria-controls="mobile-cart-dialog" aria-haspopup="dialog" aria-expanded="false">

@@ -5,7 +5,9 @@ const {loadConfig} = require('./sync-seo.cjs');
 const {synchronizeSite} = require('./business-html.cjs');
 const {readMenu, synchronizeMenu} = require('./generate-menu-html.cjs');
 
-const required = ['index.html', 'css/styles.css', 'css/theme.css', 'js/app.js', 'js/config.js', 'js/menu-data.js'];
+const {synchronizePromotions} = require('./promotions-html.cjs');
+
+const required = ['index.html', 'css/styles.css', 'css/theme.css', 'js/app.js', 'js/config.js', 'js/menu-data.js', 'js/promotions.js'];
 const allowedAsset = /^assets\/(?:fonts\/[\w.-]+\.(?:woff2|txt)|images\/(?:brand|hero|products)\/[\w.-]+\.(?:webp|png|jpe?g|ico|svg))$/;
 const root = fs.realpathSync(path.resolve(__dirname, '..'));
 
@@ -26,6 +28,8 @@ function inventory(siteRoot = root) {
   const html = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
   assert.ok(html === synchronizeSite(html, config), 'Ejecuta npm run menu:business:sync.');
   assert.ok(html === synchronizeMenu(html, catalog, config.images.productPlaceholder, config.order), 'Ejecuta npm run menu:html:sync.');
+
+  assert.ok(html === synchronizePromotions(html, config.promotions), 'Ejecuta npm run promotions:sync.');
 
   function checkReference(reference, parent = '.') {
     if (/^(?:#|https?:\/\/|mailto:|tel:|data:)/i.test(reference)) return;

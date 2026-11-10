@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 96">
+  <defs>
+    <path id="fan" d="M0 30a36 36 0 0 1 72 0M6 30a30 30 0 0 1 60 0m-54 0a24 24 0 0 1 48 0m-42 0a18 18 0 0 1 36 0m-30 0a12 12 0 0 1 24 0"/>
+    <pattern id="waves" width="72" height="64" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#ad8c68" stroke-width="1.45" stroke-linecap="round">
+        <use href="#fan" y="9"/>
+        <use href="#fan" x="-36" y="41"/>
+        <use href="#fan" x="36" y="41"/>
+      </g>
+    </pattern>
+  </defs>
+  <path fill="url(#waves)" d="M0 0h288v96H0z"/>
+</svg>

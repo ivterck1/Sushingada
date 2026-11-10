@@ -39,25 +39,46 @@ function synchronizeBusiness(html, {business, contact, images, hero}) {
   html = html.replace(/(<a class="brand"[^>]*>\s*<img\s+src=")[^"]*("\s+alt=")[^"]*(")/,
     (_, start, separator, end) => start + escape(images.logo) + separator + escape(business.name) + end);
   const lines = [
-    '<div>',
-    `  <p>${escape(business.name)}</p>`,
-    '  <div id="business-contact" role="group" aria-label="Datos de contacto">'
+    `<img class="footer-logo" src="${escape(images.logo)}" alt="" width="230" height="96" loading="lazy" decoding="async">`,
+    `<p class="footer-name">${escape(business.name)}</p>`
   ];
+  const details = [];
   for (const field of ['hours', 'address', 'coverage']) {
-    if (contact[field]?.trim()) lines.push(`    <p>${escape(contact[field])}</p>`);
+    if (contact[field]?.trim()) details.push(`  <p>${escape(contact[field])}</p>`);
   }
   if (validPhone(contact.phone)) {
-    lines.push(`    <p><a class="contact-phone" href="tel:${escape(contact.phone)}">${escape(contact.phone)}</a></p>`);
+    details.push(`  <p><a class="contact-phone" href="tel:${escape(contact.phone)}">${escape(contact.phone)}</a></p>`);
+  }
+  if (details.length) {
+    lines.push('<div id="business-contact" role="group" aria-label="Datos de contacto">', ...details, '</div>');
   }
 
-  const links = Object.entries(socialIcons)
-    .filter(([field]) => validSocialUrl(field, contact[field]))
-    .map(([field, {label, shape}]) => `      <a href="${escape(contact[field])}" target="_blank" rel="noopener noreferrer" aria-label="${label}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">${shape}</svg></a>`);
-  if (links.length) lines.push('    <nav class="footer-social" aria-label="Redes sociales">', ...links, '    </nav>');
-  lines.push('  </div>', '</div>',
-    `<img class="footer-logo" src="${escape(images.logo)}" alt="" width="230" height="96">`);
+  const links = [];
+  let hasDemoLinks = false;
+  for (const [field, {label, shape}] of Object.entries(socialIcons)) {
+    const icon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">${shape}</svg>`;
+    if (validSocialUrl(field, contact[field])) {
+      links.push(`    <li><a href="${escape(contact[field])}" target="_blank" rel="noopener noreferrer" aria-label="${label}">${icon}</a></li>`);
+    } else if (contact.socialDemo === true) {
+      hasDemoLinks = true;
+      links.push(`    <li><a href="#footer-social-demo" aria-label="${label}, perfil pendiente">${icon}</a></li>`);
+    }
+  }
+
+  const social = [];
+  if (links.length) {
+    social.push('<nav class="footer-social-block" aria-labelledby="footer-social-title">',
+      '  <h2 class="footer-heading" id="footer-social-title">Redes</h2>',
+      '  <ul class="footer-social">', ...links, '  </ul>');
+    if (hasDemoLinks) {
+      social.push('  <p class="footer-social-note" id="footer-social-demo" tabindex="-1">Perfiles oficiales por confirmar.</p>');
+    }
+    social.push('</nav>');
+  }
+
   const story = replaceBlock(html, 'BUSINESS-STORY', [`<p>${escape(business.description)}</p>`], '            ');
-  return replaceBlock(story, 'BUSINESS-FOOTER', lines, '        ');
+  const footer = replaceBlock(story, 'BUSINESS-FOOTER', lines, '          ');
+  return replaceBlock(footer, 'BUSINESS-SOCIAL', social, '        ');
 }
 
 function synchronizeSite(html, config) {

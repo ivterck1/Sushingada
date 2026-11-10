@@ -4,6 +4,8 @@ __pycache__/
 tmp/
 client-input/
 backups/
+/assets/images/products-demo/
+/decorations/
 .env
 .env.*
 *.local.json

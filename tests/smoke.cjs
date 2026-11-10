@@ -6,6 +6,7 @@ const path = require('node:path');
 const {chromium} = require('playwright');
 const {loadConfig} = require('../tools/sync-seo.cjs');
 const {readMenu} = require('../tools/generate-menu-html.cjs');
+const {synchronizePromotions} = require('../tools/promotions-html.cjs');
 
 const root = process.env.SITE_ARTIFACT ? path.resolve(process.env.SITE_ARTIFACT) : path.resolve(__dirname, '..');
 const origin = 'https://restaurant.test';
@@ -18,8 +19,8 @@ const types = new Map([
   ['.jpg', 'image/jpeg'], ['.jpeg', 'image/jpeg'], ['.ico', 'image/x-icon'], ['.woff2', 'font/woff2']
 ]);
 
-async function visit(browser, {width = 1200, prefix = '/', javaScriptEnabled = true, approved = false, broken = false} = {}) {
-  const page = await browser.newPage({viewport:{width,height:900}, javaScriptEnabled, reducedMotion:'reduce'});
+async function visit(browser, {width = 1200, prefix = '/', javaScriptEnabled = true, approved = false, broken = false, promotions, reducedMotion = 'reduce'} = {}) {
+  const page = await browser.newPage({viewport:{width,height:900}, javaScriptEnabled, reducedMotion});
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', async route => {
@@ -44,6 +45,7 @@ async function visit(browser, {width = 1200, prefix = '/', javaScriptEnabled = t
         (_, open, attrs) => open + attrs.replace(/src="[^"]+"/, 'src="assets/images/products/ausente.webp"')
           .replace(' data-image-state="fallback"', ''));
     }
+    if (promotions && name === 'index.html') body = synchronizePromotions(body.toString(), promotions);
     return route.fulfill({body, contentType});
   });
   await page.goto(origin + prefix);
@@ -142,4 +144,86 @@ test('carrito, navegación, foco, persistencia y pedido en tres anchos', async t
     assert.deepEqual(errors, []);
     await page.close();
   }
+});
+
+test('carrusel demo: navegación circular, teclado, selección y ancho estable', async t => {
+  const browser = await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL || 'chrome'});
+  t.after(() => browser.close());
+  for (const width of [320, 375, 390, 768, 1024, 1440]) {
+    const {page, errors} = await visit(browser, {width});
+    const section = page.locator('#promociones');
+    const stage = section.locator('.promotion-stage');
+    const panels = section.locator('[data-campaign]');
+    const counter = section.locator('.promotion-counter');
+    const next = section.getByRole('button', {name:'Promoción siguiente'});
+    const previous = section.getByRole('button', {name:'Promoción anterior'});
+    const active = section.locator('[data-campaign][data-active]');
+    assert.equal(await panels.count(), 3);
+    assert.equal(await active.getAttribute('data-campaign'), 'crazy-fridays');
+    assert.equal(await counter.textContent(), '01 / 03');
+    assert.equal(await active.getByRole('heading').textContent(), '3×1');
+    const height = (await stage.boundingBox()).height;
+    await previous.click();
+    assert.equal(await active.getAttribute('data-campaign'), 'combo-ngada');
+    await next.click();
+    assert.equal(await active.getAttribute('data-campaign'), 'crazy-fridays');
+    await next.click();
+    assert.equal(await active.getAttribute('data-campaign'), 'birthday-ngada');
+    assert.equal(await counter.textContent(), '02 / 03');
+    assert.equal(await section.getByRole('button', {name:'Mostrar Birthday Ngada'}).getAttribute('aria-current'), 'true');
+    assert.match(await section.getByRole('status').textContent(), /Birthday Ngada/);
+    assert.equal(await section.locator('[data-campaign][inert][aria-hidden="true"]').count(), 2);
+    assert.equal(await active.locator('.promotion-photos').evaluate(node => getComputedStyle(node).animationName), 'none');
+    await page.keyboard.press('ArrowLeft');
+    assert.equal(await active.getAttribute('data-campaign'), 'crazy-fridays');
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    assert.ok(await next.evaluate(node => document.activeElement === node && node.matches(':focus-visible')));
+    await section.getByRole('button', {name:'Mostrar Combo Ngada'}).click();
+    assert.equal(await counter.textContent(), '03 / 03');
+    assert.equal((await stage.boundingBox()).height, height);
+    if (width === 390) {
+      await stage.dispatchEvent('pointerdown', {pointerType:'touch',pointerId:1,isPrimary:true,clientX:250,clientY:80});
+      await stage.dispatchEvent('pointerup', {pointerType:'touch',pointerId:1,isPrimary:true,clientX:160,clientY:85});
+      assert.equal(await active.getAttribute('data-campaign'), 'crazy-fridays');
+      await stage.dispatchEvent('pointerdown', {pointerType:'touch',pointerId:1,isPrimary:true,clientX:250,clientY:80});
+      await stage.dispatchEvent('pointerup', {pointerType:'touch',pointerId:1,isPrimary:true,clientX:180,clientY:240});
+      assert.equal(await active.getAttribute('data-campaign'), 'crazy-fridays');
+    }
+    assert.equal(await active.getByRole('link', {name:'Explorar menú'}).getAttribute('href'), '#menu');
+    await active.getByRole('link', {name:'Explorar menú'}).click();
+    await page.waitForFunction(() => location.hash === '#menu');
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    assert.deepEqual(errors, []);
+    await page.close();
+  }
+});
+
+test('carrusel demo: HTML sin JavaScript, campañas desactivadas y animación opcional', async t => {
+  const browser = await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL || 'chrome'});
+  t.after(() => browser.close());
+  const offline = await visit(browser, {javaScriptEnabled:false, prefix:'/demo/'});
+  assert.ok(await offline.page.getByRole('heading', {name:'3×1'}).isVisible());
+  assert.equal(await offline.page.locator('.promotion-layout:visible').count(), 1);
+  assert.ok(await offline.page.locator('.promotion-controls').isHidden());
+  await offline.page.close();
+
+  const single = await visit(browser, {promotions:config.promotions.map(campaign => ({
+    ...campaign, enabled:campaign.id === 'birthday-ngada'
+  }))});
+  assert.equal(await single.page.locator('[data-campaign]').count(), 1);
+  assert.equal(await single.page.locator('[data-active]').getAttribute('data-campaign'), 'birthday-ngada');
+  assert.ok(await single.page.locator('.promotion-controls').isHidden());
+  await single.page.close();
+
+  const none = await visit(browser, {promotions:config.promotions.map(campaign => ({...campaign,enabled:false}))});
+  assert.ok(await none.page.locator('.promotions-empty').isVisible());
+  assert.ok(await none.page.locator('.promotion-controls').isHidden());
+  await none.page.close();
+
+  const animated = await visit(browser, {reducedMotion:'no-preference'});
+  await animated.page.getByRole('button', {name:'Promoción siguiente'}).click();
+  assert.equal(await animated.page.locator('[data-active] .promotion-photos')
+    .evaluate(node => getComputedStyle(node).animationName), 'promotion-frame');
+  await animated.page.close();
 });

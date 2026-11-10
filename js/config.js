@@ -16,11 +16,70 @@ const siteConfig = {
   whatsapp: { number: "", enabled: false },
   hero: {
     eyebrow: "Demostración",
-    title: "Elige tu próximo antojo.",
-    highlight: "Pide a tu manera.",
-    description: "Explora el catálogo ficticio de SUSHI NGADA y prueba el carrito de demostración."
+    title: "Sushi",
+    highlight: "Ngada",
+    description: "Sabor japonés con actitud urbana"
   },
-  contact: { phone: "", hours: "", address: "", coverage: "", instagram: "", facebook: "", tiktok: "" },
+  promotions: [
+    {
+      "id": "crazy-fridays",
+      "name": "Crazy Fridays",
+      "headline": [
+        "3×1"
+      ],
+      "description": "Tres por uno en rollos seleccionados.",
+      "image": {
+        "src": "assets/images/products/rollos-variados-demo.webp",
+        "alt": "Rollos variados de sushi"
+      },
+      "label": "Promoción ficticia · Demo",
+      "link": "#menu",
+      "order": 10,
+      "enabled": true,
+      "message": "Los viernes se ponen NGADA."
+    },
+    {
+      "id": "birthday-ngada",
+      "name": "Birthday Ngada",
+      "headline": [
+        "Tu día.",
+        "Tu festín."
+      ],
+      "description": "Celebra tu cumpleaños con una experiencia especial de sushi.",
+      "image": {
+        "src": "assets/images/products/ngada-roll-demo.webp",
+        "alt": "Rollos de salmón con flores de sakura al fondo"
+      },
+      "label": "Promoción ficticia · Demo",
+      "link": "#menu",
+      "order": 20,
+      "enabled": true,
+      "status": "Beneficio por definir"
+    },
+    {
+      "id": "combo-ngada",
+      "name": "Combo Ngada",
+      "headline": [
+        "El doble",
+        "de antojo."
+      ],
+      "description": "Una selección de rollos y entradas japonesas para compartir.",
+      "image": {
+        "src": "assets/images/products/rollos-variados-demo.webp",
+        "alt": "Rollos variados en una bandeja"
+      },
+      "label": "Promoción ficticia · Demo",
+      "link": "#menu",
+      "order": 30,
+      "enabled": true,
+      "status": "Precio pendiente",
+      "secondary": {
+        "src": "assets/images/products/gyozas-demo.webp",
+        "alt": "Gyozas doradas"
+      }
+    }
+  ],
+  contact: { phone: "", hours: "", address: "", coverage: "", instagram: "", facebook: "", tiktok: "", socialDemo: true },
   order: {
     pricesApproved: false,
     currency: "MXN",
@@ -32,8 +91,8 @@ const siteConfig = {
     ]
   },
   images: {
-    logo: "assets/images/brand/placeholder.svg",
-    hero: "assets/images/hero/placeholder.svg",
+    logo: "assets/images/brand/sushi-ngada.svg",
+    hero: "assets/images/hero/urban-rising-sun.webp",
     productPlaceholder: "assets/images/products/placeholder.svg"
   }
 };
